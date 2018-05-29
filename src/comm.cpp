@@ -110,6 +110,11 @@ bool send_nonce(const string* nonce)
 /* 終了する */
 bool finalize()
 {
+  int read_size;
+  char buf[BUFFER_SIZE];
+
+  read_size = read(dstSocket, buf, sizeof(buf));
+
   if(close(dstSocket) == 0)
     return true;
   else

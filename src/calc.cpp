@@ -4,20 +4,22 @@
 
 #include "calc.h"
 
+/*
 void CalcAndOutput(const std::string& src){
 	std::cout << "src : \"" << src << "\"\n";
 	std::cout << "hash: " << picosha2::hash256_hex_string(src)  << std::endl;
 }
+*/
+using namespace std;
 
-
-bool match_condition(std::string& hash, std::string& zero){
+bool match_condition(string& hash, string& zero){
 
 	if(hash.substr(0, zero.size())==zero)	return true;
 	else return false;
 
 }
 
-void randam_nonce(std::string& nonce){
+void randam_nonce(string& nonce){
 
 	const char set[] = "0123456789abcdef";
 	int randam;
@@ -30,10 +32,10 @@ void randam_nonce(std::string& nonce){
 }
 
 
-std::string hash_sha256(std::string& block_nonce){
+string hash_sha256(string& block_nonce){
 
-	std::string hash_1st;
-	std::string hash_2nd;
+	string hash_1st;
+	string hash_2nd;
 
 	hash_1st = picosha2::hash256_hex_string(block_nonce);
 	hash_2nd = picosha2::hash256_hex_string(hash_1st);
@@ -46,12 +48,12 @@ std::string hash_sha256(std::string& block_nonce){
 }
 
 
-std::string calc_nance(std::string& zero_size, std::string& block){
+string calc_nance(string& zero_size, string& block){
 
 	//initial value
-	std::string block_nonce;
-	std::string hash;
-	std::string nonce(8,' ');
+	string block_nonce;
+	string hash;
+	string nonce(8,' ');
 
 	while(1){
 		randam_nonce(nonce);

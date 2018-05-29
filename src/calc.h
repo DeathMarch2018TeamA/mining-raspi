@@ -2,7 +2,7 @@
 #define _CALC_H_
 
 #include "picosha2.h"
-#include "calc.cpp"
+using namespace std;
 
 /**
  * @brief check condition
@@ -10,14 +10,14 @@
  * @param (zero) condition
  * @return true:condition OK, false:condition NG
  */
-bool match_condition(std::string& hash, std::string& zero);
+bool match_condition(string& hash, string& zero);
 
 /**
  * @brief twice calc hash value 
  * @param (block_nonce) input string
  * @return hash value
  */
-std::string hash_sha256(std::string& block_nonce);
+string hash_sha256(string& block_nonce);
 
 /**
  * @brief calc nance value
@@ -25,7 +25,7 @@ std::string hash_sha256(std::string& block_nonce);
  * @param (block) block string
  * @return nance value
  */
-std::string calc_nance(std::string& zero_size, std::string& block);
+string calc_nance(string& zero_size, string& block);
 
 
 #endif // _CALC_H_
