@@ -3,47 +3,54 @@
 #include <stdlib.h>	//rand,srand
 
 #include "comm.hpp"
-#include "calc.h"
+#include "calc.hpp"
 
-using namespace std;
+using std::cout;
+using std::endl;
+using std::string;
+using namespace shigeCoin;
 
-int main()
-{
-  char team_name[] = "shigeCoin";
-  string *p_zero_num, *p_block, *p_nonce;
-  string zero_num, block, nonce;
+int main(void){
+    char team_name[] = "shigeCoin";
+    string *p_zero_num, *p_block[10], *p_nonce[10];
 
-  // seed set for randam_nonce()
-  srand((unsigned) time(NULL));
-  
-  // sign up for server
-  if (!initialize(team_name)) {
-    cout << "failed to initialize socket" << endl;
-    return -1;
-  }
-  p_zero_num = get_zero();
-  zero_num = *p_zero_num;
-  cout << "zero_num:" << p_zero_num << endl;
-
-  // nonce calculate
-  for (int i = 0; i < 10; i++) {
-    p_block = get_block();
-    block = *p_block;
-    nonce = calc_nance(zero_num, block);
-    p_nonce = &nonce;
-
-    if (!send_nonce(p_nonce)) {
-      cout << "failed to send nonce" << endl;
+    // seed set for randam_nonce()
+    srand((unsigned)time(NULL));
+    
+    // sign up for server
+    if (!initialize(team_name)) {
+        cout << "failed to initialize socket" << endl;
+        return -1;
     }
 
-    cout << "block:" << *p_block << endl;
-    cout << "nonce:" << *p_nonce << endl;
-  }
+    p_zero_num = get_zero();
+    cout << "zero_num:" << *p_zero_num << endl;
 
-  if (!finalize()) {
-    cout << "failed to finalize socket" << endl;
-  }
+    // calculate nonce
+    for (int i = 0; i < 10; i++) {
+        p_block[i] = get_block();
+        p_nonce[i] = calc_nonce(p_zero_num, p_block[i]);
+
+        if (!send_nonce(p_nonce[i])) {
+            cout << "failed to send nonce" << endl;
+            return -2;
+        }
+
+        cout << "block:" << *p_block << endl;
+        cout << "nonce:" << *p_nonce << endl;
+    }
+
+    if (!finalize()) {
+        cout << "failed to finalize socket" << endl;
+    }
+
+    // free dynamic memory
+    delete p_zero_num;
+    for(int i = 0; i < 10; i++){
+        delete p_block[i];
+        delete p_nonce[i];
+    }
   
-  return 0;
+    return 0;
 }
 

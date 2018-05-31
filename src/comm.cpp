@@ -1,5 +1,6 @@
 #include "comm.hpp"
 
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -17,7 +18,7 @@ using namespace std;
 
 const int BUFFER_SIZE       = 256;
 const char *CONNECT_MESSAGE = "connection success";
-const char *FINISH_MESSAGE  = "FINISH"
+const char *FINISH_MESSAGE  = "FINISH";
 
 int dstSocket;
 struct sockaddr_in dstAddr;

@@ -6,20 +6,22 @@
 
 namespace shigeCoin{
 
-using namespace std;
+// using std::string;
 
 void random_nonce(string *nonce);
 
-string *calc_nance(string *zero_size, string *block){
+string *calc_nonce(string *zero_size, string *block){
 	//initial value
 	string hash;
 	string *nonce;
+    string chain_block;
     nonce = new string(8, ' ');
 
     do{
 		random_nonce(nonce);
-		hash = hash_sha256(block + nonce);
-    }while(match_condition(hash, *zero_size));
+        chain_block = *block + *nonce;
+		hash = hash_sha256(&chain_block);
+    }while(match_condition(&hash, zero_size));
 
 	return nonce;
 }
@@ -37,12 +39,12 @@ string hash_sha256(string *block_nonce){
 	return hash_2nd;
 }
 
-void randam_nonce(string *nonce){
+void random_nonce(string *nonce){
 
 	const char set[] = "0123456789abcdef";
 	int randam;
 
-	for(int i = 0; i < nonce.size(); i++){
+	for(int i = 0; i < nonce->size(); i++){
 		randam = rand() % 16;
 		(*nonce)[i]= set[randam];
 	}

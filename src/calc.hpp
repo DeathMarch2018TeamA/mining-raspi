@@ -1,6 +1,12 @@
 #ifndef _CALC_H_
 #define _CALC_H_
 
+#include <string>
+
+#include "picosha2.h"
+
+using std::string;
+
 namespace shigeCoin{
 
 /**
@@ -24,7 +30,7 @@ string hash_sha256(string *block_nonce);
  * @param (block) block string
  * @return nance value
  */
-string *calc_nance(string *zero_size, string *block);
+string *calc_nonce(string *zero_size, string *block);
 
 }
 
