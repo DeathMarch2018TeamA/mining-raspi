@@ -1,8 +1,10 @@
+#include "calc.hpp"
+
 #include <iostream>	//cout
 #include <string>	//string
 #include <stdlib.h>	//rand,srand
 
-#include "calc.h"
+using namespace std;
 
 /*
 void CalcAndOutput(const std::string& src){

@@ -1,9 +1,6 @@
 #ifndef _CALC_H_
 #define _CALC_H_
 
-#include "picosha2.h"
-using namespace std;
-
 /**
  * @brief check condition
  * @param (hash) check hash
