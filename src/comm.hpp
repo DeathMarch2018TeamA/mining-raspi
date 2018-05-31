@@ -35,7 +35,7 @@ string *get_block(void);
  * @param[in] (nonce) 送信するnonce値
  * @return 送信の成否
  */
-bool send_nonce(const string* nonce);
+bool send_nonce(const string *nonce);
 
 /**
  * コネクションを切断する
