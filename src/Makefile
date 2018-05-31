@@ -3,7 +3,7 @@ CFLAGS		= -O2
 OBJS		= main.o calc.o comm.o
 MAIN_CPP	= main.cpp
 CALC_CPP	= calc.cpp
-CALC_HPP	= calc.h
+CALC_HPP	= calc.hpp
 COMM_CPP	= comm.cpp
 COMM_HPP	= comm.hpp
 

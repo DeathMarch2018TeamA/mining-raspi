@@ -6,27 +6,29 @@
 #define COMM_HPP
 
 #include <string>
-#include <netinet/in.h>
-using namespace std;
+
+namespace shigeCoin{
+
+using std::string;
 
 /**
  * socket通信の初期化
  * @param[in] (teamname) チーム名
  * @return コネクションの成否
  */
-bool initialize(const char* teamname);
+bool initialize(const char *teamname);
 
 /**
  * 条件(ゼロの数)の受け取り
  * @return 条件(ゼロの数)
  */
-string* get_zero();
+string *get_zero(void);
 
 /**
  * ブロックを受け取る
  * @return ブロック
  */
-string* get_block();
+string *get_block(void);
 
 /**
  * nonceを送る
@@ -40,5 +42,7 @@ bool send_nonce(const string* nonce);
  * @return 切断の成否
  */
 bool finalize();
+
+}
 
 #endif
