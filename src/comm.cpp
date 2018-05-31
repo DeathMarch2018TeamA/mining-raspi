@@ -108,7 +108,7 @@ bool finalize(void){
 
     read(dstSocket, buf, sizeof(buf));
 
-    return strcmp(buf, FINISH_MESSAGE) && close(dstSocket == 0);
+    return (strcmp(buf, FINISH_MESSAGE) & close(dstSocket)) == 0;
 }
 
 }

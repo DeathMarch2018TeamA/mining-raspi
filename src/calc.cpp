@@ -21,7 +21,7 @@ string *calc_nonce(string *zero_size, string *block){
 		random_nonce(nonce);
         chain_block = *block + *nonce;
 		hash = hash_sha256(&chain_block);
-    }while(match_condition(&hash, zero_size));
+    }while(!match_condition(&hash, zero_size));
 
 	return nonce;
 }

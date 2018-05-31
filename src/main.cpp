@@ -36,8 +36,8 @@ int main(void){
             return -2;
         }
 
-        cout << "block:" << *p_block << endl;
-        cout << "nonce:" << *p_nonce << endl;
+        cout << "block:" << *p_block[i] << endl;
+        cout << "nonce:" << *p_nonce[i] << endl;
     }
 
     if (!finalize()) {
