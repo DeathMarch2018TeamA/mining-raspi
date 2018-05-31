@@ -9,8 +9,6 @@
 
 namespace shigeCoin{
 
-using std::string;
-
 /**
  * socket通信の初期化
  * @param[in] (teamname) チーム名
@@ -22,26 +20,26 @@ bool initialize(const char *teamname);
  * 条件(ゼロの数)の受け取り
  * @return 条件(ゼロの数)
  */
-string *get_zero(void);
+std::string *get_zero(void);
 
 /**
  * ブロックを受け取る
  * @return ブロック
  */
-string *get_block(void);
+std::string *get_block(void);
 
 /**
  * nonceを送る
  * @param[in] (nonce) 送信するnonce値
  * @return 送信の成否
  */
-bool send_nonce(const string *nonce);
+bool send_nonce(const std::string *nonce);
 
 /**
  * コネクションを切断する
  * @return 切断の成否
  */
-bool finalize();
+bool finalize(void);
 
 }
 
