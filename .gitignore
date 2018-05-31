@@ -1,0 +1,4 @@
+src/calc.o
+src/comm.o
+src/main.o
+src/rasp.bin
