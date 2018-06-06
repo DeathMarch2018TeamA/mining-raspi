@@ -21,4 +21,4 @@ $(OBJDIR)/%.o:	%.cpp
 		$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $<
 
 clean:
-		rm -rf $(OBJDIR)/*.o $(BINDIR)/*.o
+		rm -rf $(OBJDIR)/*.o $(TARGET)
