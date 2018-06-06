@@ -1,0 +1,3 @@
+[submodule "lib/PicoSHA2"]
+	path = lib/PicoSHA2
+	url = http://github.com/okdshin/PicoSHA2

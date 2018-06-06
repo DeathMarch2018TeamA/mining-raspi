@@ -7,17 +7,20 @@ CALC_HPP	= calc.hpp
 COMM_CPP	= comm.cpp
 COMM_HPP	= comm.hpp
 
-rasp_bin:	$(OBJS)
-		$(CC) $(CFLAGS) -o rasp.bin $(OBJS)
+TARGET		= ../bin/mining-raspi
+SOURCES		= $(wildcard *.cpp)
+INCLUDE		= -I ../include
+OBJDIR		= ../obj
+OBJECTS		= $(addprefix $(OBJDIR)/, $(SOURCES:.cpp=.o))
 
-main.o:		$(MAIN_CPP) calc.o comm.o
-		$(CC) $(CFLAGS) -o main.o -c $(MAIN_CPP)
+$(TARGET):	$(OBJECTS)
+		$(CC) $(CFLAGS) -o $@ $^
 
-calc.o:		$(CALC_CPP) $(CALC_HPP)
-		$(CC) $(CFLAGS) -o calc.o -c $(CALC_CPP)
+$(OBJDIR)/%.o:	%.cpp
+		@[ -d $(OBJDIR) ]
+		$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $<
 
-comm.o:		$(COMM_CPP) $(COMM_HPP)
-		$(CC) $(CFLAGS) -o comm.o -c $(COMM_CPP)
+all: clean $(TARGET)
 
 clean:
-		rm main.o calc.o comm.o rasp.bin
+		rm -f $(OBJECTS) $(TARGET)

@@ -3,8 +3,6 @@
 
 #include <string>
 
-#include "picosha2.h"
-
 using std::string;
 
 namespace shigeCoin{

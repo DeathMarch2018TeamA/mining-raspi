@@ -1,9 +1,9 @@
+#include "../include/comm.hpp"
+#include "../include/calc.hpp"
+
 #include <iostream>	//cout
 #include <string>	//string
 #include <stdlib.h>	//rand,srand
-
-#include "comm.hpp"
-#include "calc.hpp"
 
 using std::cout;
 using std::endl;
