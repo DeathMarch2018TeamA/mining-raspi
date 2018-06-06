@@ -3,20 +3,22 @@ CFLAGS		= -O2
 BINDIR		= ../bin
 TARGET		= $(BINDIR)/mining-raspi
 SOURCES		= $(wildcard *.cpp)
-INCLUDE		= -I ../include
+INCLUDE		= -I ../include -I ../lib/
 OBJDIR		= ../obj
 OBJECTS		= $(addprefix $(OBJDIR)/, $(SOURCES:.cpp=.o))
 
-all:
-		mkdir $(BINDIR) $(OBJDIR)
-		make $(TARGET)
-
 $(TARGET):	$(OBJECTS)
+		@if [ ! -d $(BINDIR) ]; then\
+			mkdir $(BINDIR);\
+		fi
 		$(CC) $(CFLAGS) -o $@ $^
 
 $(OBJDIR)/%.o:	%.cpp
+		@if [ ! -d $(OBJDIR) ]; then\
+			mkdir $(OBJDIR);\
+		fi
 		@[ -d $(OBJDIR) ]
 		$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $<
 
 clean:
-		rm -rf $(OBJDIR) $(BINDIR)
+		rm -rf $(OBJDIR)/*.o $(BINDIR)/*.o

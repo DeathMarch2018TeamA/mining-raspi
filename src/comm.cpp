@@ -1,4 +1,4 @@
-#include "../include/comm.hpp"
+#include "comm.hpp"
 
 #include <unistd.h>
 #include <sys/types.h>

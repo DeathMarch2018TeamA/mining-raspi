@@ -1,6 +1,6 @@
-#include "../include/calc.hpp"
+#include "calc.hpp"
 
-#include "../lib/PicoSHA2/picosha2.h"
+#include "PicoSHA2/picosha2.h"
 
 #include <iostream>	//cout
 #include <string>	//string

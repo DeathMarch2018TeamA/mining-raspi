@@ -1,5 +1,5 @@
-#include "../include/comm.hpp"
-#include "../include/calc.hpp"
+#include "comm.hpp"
+#include "calc.hpp"
 
 #include <iostream>	//cout
 #include <string>	//string
